@@ -1,0 +1,714 @@
+body {
+                font-size: 14px;
+                font-family: 'Microsoft Yahei', 'Segoe UI', Arial, Helvetica, sans-serif
+}
+
+button,
+input[type="button"],
+input[type="submit"] {
+                outline: none
+}
+
+a {
+                color: #369;
+                text-decoration: none
+}
+
+a.ua {
+                text-decoration: underline
+}
+
+a.hua:hover {
+                text-decoration: underline
+}
+
+a.activea {
+                color: white;
+                padding: 8px;
+                display: inline-block;
+                background-color: #82BF71;
+                border-radius: 2px;
+                text-align: center;
+}
+
+a.inactivea {
+                padding: 0 8px;
+                display: inline-block;
+}
+
+a.inactivea:hover {
+                text-decoration: underline;
+}
+
+#wrapper {
+                margin: 0 auto;
+                width: 1048px
+}
+
+#header h1 {
+                margin-bottom: 0
+}
+
+#header h2 {
+                font-size: 18px;
+                color: #000000;
+                font-weight: bold;
+                line-height: 1.1;
+                margin-top: 0
+}
+
+#middle {
+                clear: both
+}
+
+#content {
+                min-height: 420px
+}
+
+#intro {
+                font-size: 16px
+}
+
+#intro ul {
+                list-style: none outside none;
+                line-height: 32px
+}
+
+#intro ul li {
+                background: url("/images/light-email.png") no-repeat top left;
+                padding-left: 36px
+}
+
+.item {
+                margin: 15px 0;
+                clear: both
+}
+
+.fleft {
+                float: left
+}
+
+.fright {
+                float: right
+}
+
+.item label {
+                display: inline-block;
+                float: left;
+                font-size: 14px;
+                line-height: 30px;
+                margin-right: 15px;
+                text-align: right;
+                vertical-align: middle;
+                width: 76px
+}
+
+.basic-input {
+                border: 1px solid #c9c9c9;
+                border-radius: 3px 3px 3px 3px;
+                font-size: 14px;
+                height: 18px;
+                padding: 5px;
+                vertical-align: middle;
+                width: 250px
+}
+
+#captcha {
+                width: 95px
+}
+
+select {
+                border: 1px solid #c9c9c9;
+                border-radius: 3px 3px 3px 3px
+}
+
+input {
+                margin-right: 3px;
+                vertical-align: middle
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+                font-family: inherit;
+                font-size: inherit;
+                font-style: inherit;
+                font-weight: inherit
+}
+
+img {
+                border: 0
+}
+
+.btn_submit {
+                background: none repeat scroll 0 0 #000000;
+                border: 1px solid #000000;
+                color: #fff;
+                border-radius: 3px 3px 3px 3px;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: bold;
+                padding: 6px 26px
+}
+
+.btn_cancel {
+                background: none repeat scroll 0 0 #f5f5f5;
+                border: 1px solid #dcdcdc;
+                color: #444;
+                border-radius: 3px 3px 3px 3px;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: bold;
+                padding: 6px 16px
+}
+
+#footer {
+                border-top: 1px solid #ebebeb;
+                margin: 20px 0;
+                padding-top: 8px;
+                color: #999
+}
+
+#footer a {
+                color: #000000;
+                text-decoration: none;
+                margin-right: 16px
+}
+
+#header-navigation a {
+                color: #000000;
+                text-decoration: none;
+                margin-left: 20px
+}
+
+.agreement input,
+.agreement label,
+.reminder-container input,
+.reminder-label,
+.remember input,
+.remember label {
+                cursor: pointer
+}
+
+.agreement .agreement-label,
+.remember .remember-label {
+                color: #000;
+                font-size: 13px;
+                display: inline;
+                float: none;
+                text-align: left;
+                width: auto;
+                margin: 0
+}
+
+.agreement,
+.remember {
+                font-size: 13px
+}
+
+.validate-error,
+.validate-valid {
+                background: url("/images/tips_arrow.gif") no-repeat scroll 0 0 transparent;
+                padding-left: 10px;
+                font-size: 13px
+}
+
+.validate-error {
+                background-position: left -51px;
+                color: #fe2617
+}
+
+.validate-valid {
+                background-position: left 5px;
+                color: #808080
+}
+
+#track-container {
+                border: 1px solid #000000;
+                border-radius: 3px 3px 3px 3px;
+                height: 90px;
+                text-align: center;
+                width: 468px;
+                font-size: 12px;
+                color: #888;
+                padding: 2px
+}
+
+.reminder-container .reminder-label {
+                float: none;
+                width: auto;
+                margin: 0
+}
+
+.image-select-area {
+                font-size: 12px;
+                line-height: 30px;
+                color: #555
+}
+
+#selected_image {
+                vertical-align: middle
+}
+
+.disabled {
+                background: none repeat scroll 0 0 #f0f0f0!important;
+                border: 1px solid #b9b9b9!important;
+                color: #999!important
+}
+
+.error-message {
+                color: #fe2617;
+                font-size: 12px
+}
+
+.success-message-box,
+.error-message-box {
+                text-align: center
+}
+
+#ads_td {
+                width: 320px;
+                text-align: right;
+                vertical-align: bottom;
+}
+
+.success-message-box {
+                position: absolute;
+                top: 110px;
+                width: 728px;
+                z-index: 100
+}
+
+.success-message {
+                color: #222;
+                font-size: 13px;
+                font-weight: bold;
+                text-align: center;
+                background-color: #e5f6fa;
+                border: 1px solid #a2dced;
+                border-radius: 2px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                padding: 6px;
+                display: inline-block
+}
+
+.message-box-close {
+                background: url("/images/faq-sprite.png") no-repeat scroll 0 0 transparent;
+                height: 7px;
+                width: 7px;
+                margin-left: -11px;
+                margin-top: 4px;
+                position: absolute;
+}
+
+#user_account {
+                color: #666;
+                font-size: 13px
+}
+
+#track-help {
+                line-height: 16px
+}
+
+#manage-tab {
+                padding-bottom: 8px
+}
+
+.Gq {
+                border-bottom: 1px solid #ccc;
+                clear: both
+}
+
+.d6 {
+                list-style: none outside none;
+                margin: 0;
+                padding: 0 0 0 10px
+}
+
+.en {
+                color: #005c9c;
+                display: inline-block;
+                font-weight: bold;
+                margin-bottom: -1px;
+                padding: 6px 8px;
+                min-width: 50px;
+                text-align: center
+}
+
+.en.zl {
+                border-bottom-colors: none;
+                border-image: none;
+                border-left-colors: none;
+                border-right-colors: none;
+                border-top-colors: none;
+                background: url("/images/sprite-bg.png") repeat-x scroll 0 -50px transparent;
+                border-color: #ccc #ccc #fff;
+                border-radius: 2px 2px 0 0;
+                border-style: solid;
+                border-width: 1px
+}
+
+.en.zl .Jw {
+                color: #222
+}
+
+.e {
+                color: #369
+}
+
+.e a:hover {
+                text-decoration: underline
+}
+
+table.odtt {
+                border-spacing: 0;
+                border-collapse: collapse
+}
+
+.odtt .label {
+                vertical-align: top
+}
+
+.odtt .value {
+                color: #222;
+                padding-left: 32px;
+                vertical-align: top
+}
+
+.odtt .value .vtips {
+                color: #888;
+                font-size: 12px
+}
+
+.odtt .value .setting-item {
+                padding-bottom: 8px
+}
+
+.grid-section {
+                padding-top: 8px
+}
+
+.grid-section a:hover {
+                text-decoration: underline
+}
+
+.grid {
+                border-collapse: collapse;
+                border-spacing: 0;
+                width: 100%
+}
+
+.grid tr {
+                border-bottom: 1px solid #e5e5e5
+}
+
+.grid td {
+                padding: 6px 0
+}
+
+.grid .time {
+                padding-top: 2px;
+                font-size: 12px;
+                color: #888
+}
+
+.grid thead tr {
+                border-top: 1px solid #E5E5E5
+}
+
+.grid thead th {
+                padding: 8px 0;
+                vertical-align: middle
+}
+
+.grid .subject {
+                text-align: left;
+                width: 65%
+}
+
+.grid .send-date {
+                text-align: left
+}
+
+.grid td.read-count {
+                text-align: center
+}
+
+.grid td.action {
+                text-align: right
+}
+
+.grid .action,
+.grid .send-date,
+.grid .read-count {
+                white-space: nowrap
+}
+
+.grid td.subject,
+.grid td.send-date,
+.grid td.read-count {
+                cursor: pointer
+}
+
+.grid-footer {
+                clear: both;
+                padding: 2px 0;
+                height: 32px;
+                line-height: 32px;
+                vertical-align: middle
+}
+
+.grid-pagination {
+                float: right;
+                font-size: 13px
+}
+
+span.read-times {
+                font-size: 20px;
+                font-style: italic;
+                font-family: Georgia, "Times New Roman"
+}
+
+div.seperator {
+                border-top: 1px solid #e5e5e5;
+                margin: 10px 0
+}
+
+#tooltip {
+                position: absolute;
+                z-index: 1000;
+                background-color: white;
+                border: 1px solid #ccc;
+                border-radius: 2px 2px 2px 2px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                color: #666;
+                max-width: 250px;
+                padding: 16px
+}
+
+#tooltip h3,
+#tooltip div {
+                margin: 0;
+                font-size: 13px;
+                font-weight: normal!important
+}
+
+.help-tooltip {
+                background: url("/images/help_13.png") no-repeat scroll center center transparent;
+                display: inline-block;
+                height: 14px;
+                width: 14px
+}
+
+.upload-section {
+                clear: both;
+                color: #666;
+                font-size: 13px!important
+}
+
+.u-d-i {
+                display: inline;
+                float: left;
+                margin: 10px;
+                overflow: hidden
+}
+
+.u-d-i .r-l {
+                font-size: 12px;
+                padding: 10px 0
+}
+
+.p4lr {
+                font-size: 13px;
+                margin-top: 38px;
+                color: #666
+}
+
+.email_unreceived {
+                margin-top: 160px
+}
+
+.email_unreceived ul {
+                list-style: none outside none;
+                font-size: 12px;
+                color: #666
+}
+
+.email_unreceived p {
+                color: #33a9e5
+}
+
+#slider {
+                width: 728px;
+                height: 409px;
+                overflow: hidden;
+                box-shadow: 0 1px 4px #999;
+                border: 1px solid #eee;
+                background: url("/images/loading.gif") no-repeat scroll 50% 50% transparent
+}
+
+#slider_rotate {
+                position: absolute;
+                z-index: 5;
+                display: none;
+                width: 728px;
+                text-align: center;
+                top: 50%
+}
+
+.help_asklist {
+                margin: 0;
+                padding: 0
+}
+
+.help_asklist li {
+                list-style: none outside none
+}
+
+.help_asklist .asklist_show .help_askcomment {
+                display: block;
+                margin: 6px 0 13px
+}
+
+.help_asklist .help_askcomment {
+                display: none
+}
+
+.help_asklist .asklist_show .list_title {
+                color: #333;
+                font-weight: bold
+}
+
+.help_asklist li .list_title {
+                line-height: 30px
+}
+
+.help_askcomment .help_ask_warp {
+                background-color: #f7f7f7;
+                border: 1px solid #eaeaea;
+                border-radius: 4px;
+                position: relative;
+                line-height: 17px
+}
+
+.help_askcomment .arrow {
+                height: 5px;
+                left: 35px;
+                overflow: hidden;
+                position: absolute;
+                top: -5px;
+                width: 10px;
+                background: url("/images/faq-sprite.png") no-repeat scroll 0 -8px transparent
+}
+
+.help_askcomment .a_close {
+                background: url("/images/faq-sprite.png") no-repeat scroll 0 0 transparent;
+                display: block;
+                float: right;
+                height: 7px;
+                width: 7px;
+                margin: 8px 10px 0 0
+}
+
+.help_askcomment .askcomment_main {
+                padding: 12px 15px 15px 18px
+}
+
+.share_ir {
+                float: right;
+                margin-top: 10px
+}
+
+.share_ir a {
+                background: url("/images/share_ir.png") no-repeat scroll 0 0 transparent;
+                display: inline-block;
+                margin-left: 12px;
+                width: 24px;
+                height: 24px
+}
+
+.share_ir .douban:hover {
+                background-position: 0 0
+}
+
+.share_ir .douban {
+                background-position: 0 -25px
+}
+
+.share_ir .tqq:hover {
+                background-position: 0 -100px
+}
+
+.share_ir .tqq {
+                background-position: 0 -125px
+}
+
+.share_ir .qzone:hover {
+                background-position: 0 -150px
+}
+
+.share_ir .qzone {
+                background-position: 0 -175px
+}
+
+.share_ir .tsina:hover {
+                background-position: 0 -200px
+}
+
+.share_ir .tsina {
+                background-position: 0 -225px
+}
+
+.step-list li {
+                list-style-type: decimal
+}
+
+.grid-actionbar {
+                float: left
+}
+
+.grid-actionbar .action-button {
+                background: url("/images/sprite-bg.png") repeat-x scroll 0 0 transparent;
+                border-color: #bbb #bbb #999;
+                border-radius: 3px;
+                border-style: solid;
+                border-width: 1px;
+                color: #333;
+                cursor: pointer;
+                font-size: 12px;
+                height: 25px;
+                line-height: 25px;
+                padding: 0 14px;
+                vertical-align: middle;
+                margin: 0;
+                display: inline-block
+}
+
+.btn-disabled {
+                background: white!important;
+                border: 1px solid rgba(0, 0, 0, 0.05)!important;
+                color: #b8b8b8!important
+}
+
+.a_s_m_b {
+                width: 1048px!important
+}
+
+.grid .check-box {
+                text-align: left;
+                min-width: 26px
+}
+
+.sr-only {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                border: 0;
+}
