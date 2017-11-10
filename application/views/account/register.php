@@ -33,6 +33,10 @@
     </div>
     <input type="hidden" name="__csrf__" value="36bebc3fd724bc486a00ea71ac45beef_e95010b2708bd26416ff531d9de7cdf0" />
 </form>
+
+
+
+
 <p class="p4lr">已经拥有阅否帐号？ &nbsp;<a href="/account/login">直接登录 »</a></p>
 </div>
 </div>

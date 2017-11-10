@@ -21,12 +21,38 @@ class Account extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('welcome_model');
+        $this->load->model('account_model');
     }
 
     public function login()
     {
         $data['title'] = 'Alien';
+        $mail = $this->input->post('account');
+        if(!is_null($mail)){
+            $passwd =  $this->input->post('password');
+            $result = $this->account_model->login($mail,$passwd);
+            if($result){
+                $this->session->set_userdata(array('mail' => $mail,'passwd' => $passwd));
+                $this->load->view('templates/header',$data);
+                $this->load->view('account/track');
+                $this->load->view('templates/footer');
+            }else{
+                $this->load->view('templates/header',$data);
+                $this->load->view('account/loginfalse');
+                $this->load->view('templates/footer');
+            }
+        }else{
+            $user_mail = $this->session->mail;
+            $this->load->view('templates/header',$data);
+            $this->load->view('account/login');
+            $this->load->view('templates/footer');
+        }
+    }
+
+
+    public function logout()
+    {
+        $user_mail = $this->session->mail;
         $this->load->view('templates/header',$data);
         $this->load->view('account/login');
         $this->load->view('templates/footer');
@@ -43,9 +69,24 @@ class Account extends CI_Controller {
     public function register()
     {
         $data['title'] = 'Alien';
-        $this->load->view('templates/header',$data);
-        $this->load->view('account/register');
-        $this->load->view('templates/footer');
+        $mail = $this->input->post('account');
+        if(!is_null($mail)){
+            if($this->account_model->mail_exist($mail)){
+                $this->load->view('templates/header',$data);
+                $this->load->view('account/user_exist');
+                $this->load->view('templates/footer');
+            }else{
+                $passwd =  $this->input->post('password');
+                $this->account_model->register($mail,$passwd);
+                $this->load->view('templates/header',$data);
+                $this->load->view('account/track');
+                $this->load->view('templates/footer');
+            }
+        }else{
+            $this->load->view('templates/header',$data);
+            $this->load->view('account/register');
+            $this->load->view('templates/footer');
+        }
     }
 
     public function track()
