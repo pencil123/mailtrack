@@ -52,38 +52,41 @@ class Account extends CI_Controller {
 
     public function logout()
     {
-        $user_mail = $this->session->mail;
-        $this->load->view('templates/header',$data);
+        $msg = array('title'=>'登陆');
+        $user_mail = $this->session->unset_userdata(array("mail","passwd"));
+        $this->load->view('templates/header',$msg);
         $this->load->view('account/login');
         $this->load->view('templates/footer');
     }
 
     public function forgotpassword()
     {
-        $data['title'] = 'Alien';
-        $this->load->view('templates/header',$data);
+        $msg = array('title'=>'忘记密码');
+        $this->load->view('templates/header',$msg);
         $this->load->view('account/forgotpassword');
         $this->load->view('templates/footer');
     }
 
     public function register()
     {
-        $data['title'] = 'Alien';
+       $msg = array('title'=>'注册');
         $mail = $this->input->post('account');
         if(!is_null($mail)){
             if($this->account_model->mail_exist($mail)){
-                $this->load->view('templates/header',$data);
+                $msg = array('title'=>'用户已存在');
+                $this->load->view('templates/header',$msg);
                 $this->load->view('account/user_exist');
                 $this->load->view('templates/footer');
             }else{
+                $msg = array('title'=>'注册成功');
                 $passwd =  $this->input->post('password');
                 $this->account_model->register($mail,$passwd);
-                $this->load->view('templates/header',$data);
+                $this->load->view('templates/header',$msg);
                 $this->load->view('account/track');
                 $this->load->view('templates/footer');
             }
         }else{
-            $this->load->view('templates/header',$data);
+            $this->load->view('templates/header',$msg);
             $this->load->view('account/register');
             $this->load->view('templates/footer');
         }

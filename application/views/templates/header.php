@@ -17,5 +17,13 @@
         <div id="header">
         <h1><a href="/"><img src="/static/img/logo.png" border="0" alt="电子邮件追踪服务" title="电子邮件追踪服务"><span class="sr-only">阅否电子邮件追踪服务</span></a></h1>
         <h2 class="fleft">简单易用的电子邮件追踪服务</h2>
-        <div class="fright" id="header-navigation"><a href="/">首页</a><a href="/account/login">登录</a><a href="/account/register">注册</span></a></div>
+        <div class="fright" id="header-navigation">
+        <?php $username = $this->session->mail;
+        if($username){
+            echo $username;
+         ?>
+        <a href="/">首页</a><a href="/account">管理</a><a href="/account/logout">退出</span></a></div>
+        <?php }else{ ?>
+        <a href="/">首页</a><a href="/account/login">登录</a><a href="/account/register">注册</span></a></div>
+        <?php } ?>
     </div>
