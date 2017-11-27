@@ -8,6 +8,11 @@
     <meta name="description" content="外星人是一项简单易用的电子邮件追踪服务，帮助您追踪已经发送的邮件。">
     <link href="/static/css/css.min.150107.css" rel="stylesheet">
     <link href="/static/css/dui.dialog.css" rel="stylesheet">
+    <script type="text/javascript" src="http://static.ifread.com/js/jquery.min.js"></script>
+    <script type="text/javascript" src="http://static.ifread.com/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://static.ifread.com/js/jquery.form.min.js"></script>
+    <script type="text/javascript" src="http://static.ifread.com/js/jquery.tooltip.pack.js"></script>
+    <script type="text/javascript" src="http://static.ifread.com/js/dui.dialog.js"></script>
 </head>
 
 <body>

@@ -23,6 +23,11 @@ class Account extends CI_Controller {
         parent::__construct();
         $this->load->model('account_model');
     }
+    
+    public function index()
+    {
+        $this->report();
+    }
 
     public function login()
     {
@@ -91,6 +96,7 @@ class Account extends CI_Controller {
             $this->load->view('templates/footer');
         }
     }
+
 
     public function track()
     {
