@@ -9,32 +9,32 @@
 <div>
 <form method="post" action="/account/forgotpassword" id="fpForm">
 <div class="item">
-                <label>邮箱</label>
-                <input id="account" class="basic-input" type="text" value="" tabindex="1" maxlength="60" name="account">
+        <label>邮箱</label>
+        <input id="account" class="basic-input" type="text" value="" tabindex="1" maxlength="60" name="account">
 </div>
 <div class="item">
-                <label>&nbsp;</label>
-                <input id="btn-submit" type="submit" class="btn_submit" value="重设密码" tabindex="2">
+        <label>&nbsp;</label>
+        <input id="btn-submit" type="submit" class="btn_submit" value="重设密码" tabindex="2">
 </div>
-<input type="hidden" name="__csrf__" value="38f2e74a5ebddb6b1d66b59fdf4c44c3_dfe36a6a2fa8bb82f9afc3a63abcf237" />
+<input type="hidden" name="<?=$name;?>" value="<?=$hash;?>" />
 </form>
 <p class="p4lr"><a href="/account/login">« 返回登录</a></p>
 <script type="text/javascript">
 $("#fpForm").validate({
 rules: {
-                account: {
-                                required: true,
-                                email: true
-                }
+        account: {
+        required: true,
+        email: true
+        }
 },
 messages: {
-                account: {
-                                required: "Email不能为空",
-                                email: "Email格式不正确"
-                }
+account: {
+        required: "Email不能为空",
+        email: "Email格式不正确"
+        }
 },
 tips: {
-                account: "请输入你的Email地址"
+        account: "请输入你的Email地址"
 },
 onkeyup: false,
 highlight: false,

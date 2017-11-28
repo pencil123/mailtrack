@@ -26,8 +26,51 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$data['title'] = 'Alien';
+        $csrf = array('name' => $this->security->get_csrf_token_name(),
+            'hash' => $this->security->get_csrf_hash());
 		$this->load->view('templates/header',$data);
-		$this->load->view('welcome');
+		$this->load->view('welcome',$csrf);
 		$this->load->view('templates/footer');
 	}
+
+    //使用协议
+    public function agreement()
+    {
+        $data['title'] = 'Alien';
+        $this->load->view('templates/header',$data);
+        $this->load->view('account/agreement');
+        $this->load->view('templates/footer');
+    }
+
+    public function howto()
+    {
+        $data['title'] = 'Alien';
+        $this->load->view('templates/header',$data);
+        $this->load->view('account/agreement');
+        $this->load->view('templates/footer');
+    }
+
+    public function faq()
+    {
+        $data['title'] = 'Alien';
+        $this->load->view('templates/header',$data);
+        $this->load->view('account/agreement');
+        $this->load->view('templates/footer');
+    }
+
+    public function privacy()
+    {
+        $data['title'] = 'Alien';
+        $this->load->view('templates/header',$data);
+        $this->load->view('account/agreement');
+        $this->load->view('templates/footer');
+    }
+
+    public function contact()
+    {
+        $data['title'] = 'Alien';
+        $this->load->view('templates/header',$data);
+        $this->load->view('account/agreement');
+        $this->load->view('templates/footer');
+    }
 }

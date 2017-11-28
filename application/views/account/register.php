@@ -4,40 +4,37 @@
 <td align="left" style="vertical-align:top;">
 <div id="content">
 <div id="intro">
-<p><strong>注册阅否</strong></p>
+<p><strong>注册</strong></p>
 </div>
 <div>
 <form method="post" action="/account/register" id="registerForm">
-    <div class="item">
-                    <label>邮箱</label>
-                    <input id="account" class="basic-input" type="text" value="" tabindex="1" maxlength="60" name="account">
-    </div>
-    <div class="item">
-                    <label>密码</label>
-                    <input id="password" class="basic-input" type="password" value="" tabindex="2" maxlength="40" name="password">
-    </div>
-    <div class="item">
-                    <label>确认密码</label>
-                    <input id="confirm_password" class="basic-input" type="password" value="" tabindex="3" maxlength="40" name="confirm_password">
-    </div>
-    <div class="item">
-                    <label>&nbsp;</label>
-                    <p class="agreement">
-                                    <input type="checkbox" tabindex="4" name="agree" id="agree" checked>
-                                    <label class="agreement-label" for="agree">我已经认真阅读并同意阅否的《<a href="/tos" target="_blank">使用协议</a>》。</label>
-                    </p>
-    </div>
-    <div class="item">
-                    <label>&nbsp;</label>
-                    <input id="btn-submit" type="submit" class="btn_submit" value="注册" title="阅读并同意阅否的《使用协议》方可注册" tabindex="5">
-    </div>
-    <input type="hidden" name="__csrf__" value="36bebc3fd724bc486a00ea71ac45beef_e95010b2708bd26416ff531d9de7cdf0" />
+<div class="item">
+    <label>邮箱</label>
+    <input id="account" class="basic-input" type="text" value="" tabindex="1" maxlength="60" name="account">
+</div>
+<div class="item">
+    <label>密码</label>
+    <input id="password" class="basic-input" type="password" value="" tabindex="2" maxlength="40" name="password">
+</div>
+<div class="item">
+    <label>确认密码</label>
+    <input id="confirm_password" class="basic-input" type="password" value="" tabindex="3" maxlength="40" name="confirm_password">
+</div>
+<div class="item">
+    <label>&nbsp;</label>
+    <p class="agreement">
+    <input type="checkbox" tabindex="4" name="agree" id="agree" checked>
+    <label class="agreement-label" for="agree">我已经认真阅读并同意《<a href="/agreement" target="_blank">使用协议</a>》。</label>
+    </p>
+</div>
+<div class="item">
+    <label>&nbsp;</label>
+    <input id="btn-submit" type="submit" class="btn_submit" value="注册" title="阅读并同意《使用协议》方可注册" tabindex="5">
+</div>
+<input type="hidden" name="<?=$name;?>" value="<?=$hash;?>" />
 </form>
 
-
-
-
-<p class="p4lr">已经拥有阅否帐号？ &nbsp;<a href="/account/login">直接登录 »</a></p>
+<p class="p4lr">已经拥有帐号？ &nbsp;<a href="/account/login">直接登录 »</a></p>
 </div>
 </div>
 <script type="text/javascript">
@@ -92,7 +89,7 @@ confirm_password: {
 }
 },
 tips: {
-account: "用来登录阅否，接收到激活邮件才能完成注册",
+account: "用来登录，接收到激活邮件才能完成注册",
 password: "字母、数字或下划线，最短6个字符，区分大小写"
 },
 onkeyup: false,

@@ -4,7 +4,7 @@
 <td align="left" style="vertical-align:top;">
 <div id="content">
 <div id="intro">
-                <p><strong>登录Alien</strong></p>
+        <p><strong>登录Alien</strong></p>
 </div>
 <div>
 <form method="post" action="/account/login" id="loginForm">
@@ -26,9 +26,11 @@
         <label>&nbsp;</label>
         <input id="btn-submit" type="submit" class="btn_submit" value="登录" tabindex="4">
 </div>
-        <input type="hidden" name="__csrf__" value="d15a5de428595f63358a6d37f4dc0c38_203c653851378a25ebb0bb2b814fcc10" />
-                </form>
-        <p class="p4lr">还没有阅否帐号？&nbsp;<a href="/account/register">立即注册 »</a></p>
+
+<input type="hidden" name="<?=$name;?>" value="<?=$hash;?>" />
+
+</form>
+<p class="p4lr">还没有帐号？&nbsp;<a href="/account/register">立即注册 »</a></p>
 </div>
 </div>
 <script type="text/javascript">

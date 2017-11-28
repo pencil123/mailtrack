@@ -497,7 +497,7 @@ div.seperator {
 }
 
 .help-tooltip {
-                background: url("/images/help_13.png") no-repeat scroll center center transparent;
+                background: url("/static/images/help_13.png") no-repeat scroll center center transparent;
                 display: inline-block;
                 height: 14px;
                 width: 14px

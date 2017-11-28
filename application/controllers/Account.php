@@ -33,23 +33,29 @@ class Account extends CI_Controller {
     {
         $data['title'] = 'Alien';
         $mail = $this->input->post('account');
+
+        //post操作
         if(!is_null($mail)){
             $passwd =  $this->input->post('password');
             $result = $this->account_model->login($mail,$passwd);
             if($result){
+                //登陆成功
                 $this->session->set_userdata(array('mail' => $mail,'passwd' => $passwd));
                 $this->load->view('templates/header',$data);
                 $this->load->view('account/track');
                 $this->load->view('templates/footer');
             }else{
+                //登陆失败
                 $this->load->view('templates/header',$data);
                 $this->load->view('account/loginfalse');
                 $this->load->view('templates/footer');
             }
         }else{
-            $user_mail = $this->session->mail;
+            //GET 登陆页面
+            $csrf = array('name' => $this->security->get_csrf_token_name(),
+                'hash' => $this->security->get_csrf_hash());
             $this->load->view('templates/header',$data);
-            $this->load->view('account/login');
+            $this->load->view('account/login',$csrf);
             $this->load->view('templates/footer');
         }
     }
@@ -59,16 +65,16 @@ class Account extends CI_Controller {
     {
         $msg = array('title'=>'登陆');
         $user_mail = $this->session->unset_userdata(array("mail","passwd"));
-        $this->load->view('templates/header',$msg);
-        $this->load->view('account/login');
-        $this->load->view('templates/footer');
+        $this->login();
     }
 
     public function forgotpassword()
     {
         $msg = array('title'=>'忘记密码');
+        $csrf = array('name' => $this->security->get_csrf_token_name(),
+            'hash' => $this->security->get_csrf_hash());
         $this->load->view('templates/header',$msg);
-        $this->load->view('account/forgotpassword');
+        $this->load->view('account/forgotpassword',$csrf);
         $this->load->view('templates/footer');
     }
 
@@ -77,22 +83,30 @@ class Account extends CI_Controller {
        $msg = array('title'=>'注册');
         $mail = $this->input->post('account');
         if(!is_null($mail)){
+            //用户已经存在
             if($this->account_model->mail_exist($mail)){
                 $msg = array('title'=>'用户已存在');
                 $this->load->view('templates/header',$msg);
                 $this->load->view('account/user_exist');
                 $this->load->view('templates/footer');
             }else{
+                //注册成功
+                //1、写入数据库
+                //2、更新session，直接登陆
                 $msg = array('title'=>'注册成功');
                 $passwd =  $this->input->post('password');
                 $this->account_model->register($mail,$passwd);
+                $this->session->set_userdata(array('mail' => $mail,'passwd' => $passwd));
                 $this->load->view('templates/header',$msg);
                 $this->load->view('account/track');
                 $this->load->view('templates/footer');
             }
         }else{
+            //GET 注册
+            $csrf = array('name' => $this->security->get_csrf_token_name(),
+                'hash' => $this->security->get_csrf_hash());
             $this->load->view('templates/header',$msg);
-            $this->load->view('account/register');
+            $this->load->view('account/register',$csrf);
             $this->load->view('templates/footer');
         }
     }
