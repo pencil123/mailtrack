@@ -39,9 +39,10 @@ class Account extends CI_Controller {
         //post操作
         if(!is_null($mail)){
             
+            //邮件是否合法
             if (!valid_email($mail)){
             echo 'email is not valid';
-            return Flase;}
+            return false;}
 
             $passwd =  $this->input->post('password');
             $result = $this->account_model->login($mail,$passwd);
@@ -90,12 +91,14 @@ class Account extends CI_Controller {
         $msg = array('title'=>'注册');
         $mail = $this->input->post('account');
 
-        if (!valid_email($mail)){
-            echo 'email is not valid';
-            return Flase;
-        }
-
         if(!is_null($mail)){
+
+            //邮件是否合法
+            if (!valid_email($mail)){
+            echo 'email is not valid';
+            return false;
+            }
+
             //用户已经存在
             if($this->account_model->mail_exist($mail)){
                 $msg = array('title'=>'用户已存在');
