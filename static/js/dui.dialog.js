@@ -63,6 +63,8 @@ if (!this.config) { return } this.render();
 this.bind();
 return this
 },
+
+
 render: function(B) {
 var z = this.config,
 C = z.nodeId || e + u.length;
@@ -213,6 +215,7 @@ return this
 
 setContent: function(z) { this.body.html(z); return this.update() },
 setTitle: function(z) { $("h3", this.title).html(z); return this },
+
 submit: function(B) {
 var z = this,
 A = $("form", this.node);
