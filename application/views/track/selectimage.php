@@ -1,1 +1,1 @@
-<ul id="l_tabs"><li id="tab_common" class="selected">常用</li><li id="tab_social">社交</li><li id="tab_emoticon">表情</li><li id="tab_userdefined">自定义</li></ul><p class="loading">正在加载，请稍候...</p>
+<ul id="l_tabs"><li id="tab_common" class="selected">常用</li><li id="tab_social">社交</li><li id="tab_emoticon">表情</li></ul><p class="loading">正在加载，请稍候...</p>

@@ -3,6 +3,7 @@ class Track extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('track_model');
         $this->load->helper('file');
         $this->load->helper('date');
         $this->load->helper('security');
@@ -59,18 +60,18 @@ class Track extends CI_Controller {
         $mail = $this->input->post('email');
         $image = $this->input->post('image');
         $remind_days = $this->input->post('remind_days');
-        $reminder = $this->input->post('reminder');
         $subject = $this->input->post('subject');
         $time_zone = $this->input->post('time_zone');
         $source = 'images/t/'.$image;
         $file_type = substr(strrchr($image,'.'),1);
         $time_stamp = now('Australia/Victoria');
         $hash_string = 'img/'.do_hash(strval($time_stamp)).'.'.$file_type;
+        $ip = $this->input->ip_address();
 
         if(copy($source,$hash_string)){
             $imgs_url = 'http://stack.publicmail.cn/'.$hash_string;
         }
-
+        $this->track_model->add($mail,$imgs_url,$remind_days,$subject,$ip);
         $data = '{"status":1,"info":"OK","data":"'.$imgs_url.'"}';
         $this->output->set_header('Content-Type: application/json; charset=utf-8');
         echo $data;

@@ -22,6 +22,8 @@ class Account extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('account_model');
+        $this->load->helper('email');
+        $this->load->helper('url');
     }
     
     public function index()
@@ -36,6 +38,11 @@ class Account extends CI_Controller {
 
         //post操作
         if(!is_null($mail)){
+            
+            if (!valid_email($mail)){
+            echo 'email is not valid';
+            return Flase;}
+
             $passwd =  $this->input->post('password');
             $result = $this->account_model->login($mail,$passwd);
             if($result){
@@ -80,8 +87,14 @@ class Account extends CI_Controller {
 
     public function register()
     {
-       $msg = array('title'=>'注册');
+        $msg = array('title'=>'注册');
         $mail = $this->input->post('account');
+
+        if (!valid_email($mail)){
+            echo 'email is not valid';
+            return Flase;
+        }
+
         if(!is_null($mail)){
             //用户已经存在
             if($this->account_model->mail_exist($mail)){
@@ -114,6 +127,9 @@ class Account extends CI_Controller {
 
     public function track()
     {
+        if(!$this->session->mail){
+            redirect(base_url('/account/login'),'refresh',301);
+        }
         $data['title'] = 'Alien';
         $this->load->view('templates/header',$data);
         $this->load->view('account/track');
@@ -122,6 +138,9 @@ class Account extends CI_Controller {
 
     public function message()
     {
+        if(!$this->session->mail){
+            redirect(base_url('/account/login'),'refresh',301);
+        }
         $data['title'] = 'Alien';
         $this->load->view('templates/header',$data);
         $this->load->view('account/message');
@@ -130,6 +149,9 @@ class Account extends CI_Controller {
 
     public function report()
     {
+        if(!$this->session->mail){
+            redirect(base_url('/account/login'),'refresh',301);
+        }
         $data['title'] = 'Alien';
         $this->load->view('templates/header',$data);
         $this->load->view('account/report');
@@ -138,6 +160,9 @@ class Account extends CI_Controller {
 
     public function photo()
     {
+        if(!$this->session->mail){
+            redirect(base_url('/account/login'),'refresh',301);
+        }
         $data['title'] = 'Alien';
         $this->load->view('templates/header',$data);
         $this->load->view('account/photo');
@@ -146,6 +171,9 @@ class Account extends CI_Controller {
 
     public function settings()
     {
+        if(!$this->session->mail){
+            redirect(base_url('/account/login'),'refresh',301);
+        }
         $data['title'] = 'Alien';
         $this->load->view('templates/header',$data);
         $this->load->view('account/settings');
@@ -154,6 +182,9 @@ class Account extends CI_Controller {
 
     public function profile()
     {
+        if(!$this->session->mail){
+            redirect(base_url('/account/login'),'refresh',301);
+        }
         $data['title'] = 'Alien';
         $this->load->view('templates/header',$data);
         $this->load->view('account/profile');
