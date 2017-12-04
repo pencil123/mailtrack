@@ -22,9 +22,38 @@ class Access extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Access_model');
+        $this->load->library('email');
+        $this->email->initialize();
         $this->filename = '/data/logs/imgs.log';
     }
     public function index()
+    {
+        //读日志并写入数据库
+        $this->read_log();
+
+        //读取数据库，发送邮件
+        $this->sendmail();
+
+    }
+
+    private function sendmail()
+    {
+        $access = $this->Access_model->parse_access();
+        foreach($access as $key=>$value){
+            $info = $this->Access_model->record_info($key);
+            $mail =$info[0];
+            $title = $info[1];
+            var_dump($info);
+            var_dump($value);
+            $this->email->from('public@publicmail.cn');
+            $this->email->to('public@publicmail.cn');
+            $this->email->subject('this is subject');
+            $this->email->message('this is message');
+            $this->email->send();
+        }
+    }
+
+    private function read_log()
     {
         //确定开始读取的位置
         $offset = $this->Access_model->offset();
@@ -40,17 +69,39 @@ class Access extends CI_Controller {
         $offset = ftell($file);
         $this->Access_model->offset($offset);
     }
+
     private function parse($line)
     {
+        //记录为空，直接返回
+        if(!$line){
+            return False;
+        }
 
-        $line_array = explode(';',$line,-1);
-        //var_dump($line_array);
-        $ip_str = $line_array[0];
-        $time_str = $line_array[1];
-        $request_str = $line_array[2];
+        $line_array = explode(';',$line);
+
+        //状态码为304缓存，直接返回
         $status_str = $line_array[3];
-        echo $ip_str;
-        $date_format = 'Y-m-dTH:i:sT';
+        if(trim($status_str) == '304'){
+            return False;
+        }
         
+        //IP地址处理
+        $ip_str = $line_array[0];
+
+        //时间处理        
+        $time_str = $line_array[1];
+        $seconds = strtotime($time_str);
+        $access_time = date('Y-m-d H:i:s',$seconds);
+
+        //请求地址处理
+        $request_str = $line_array[2];
+        $request_array = explode(' ',$request_str);
+        foreach($request_array as $req){
+            if(substr($req,1,3) === 'img'){
+                $request_url = $req;
+            }
+        }
+
+        $this->Access_model->sync_access($request_url,$access_time,$ip_str);
     }
 }
