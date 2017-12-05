@@ -9,10 +9,11 @@ class Track_model extends CI_Model {
     public function add($mail,$img_url,$remind_days,$subject,$ip)
     {
         $long_ip = ip2long($ip);
-        $imgpaht = parse_url($img_url)['path'];
+        $img = parse_url($img_url);
+        $imgpath = $img['path'];
         $array_data = array(
             'receive_mail' => $mail,
-            'imgpath' => $imgpaht,
+            'imgpath' => $imgpath,
             'title'=>$subject,
             'remind'=>$remind_days,
             'ip'=>$long_ip);

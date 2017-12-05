@@ -69,7 +69,7 @@ class Track extends CI_Controller {
         $ip = $this->input->ip_address();
 
         if(copy($source,$hash_string)){
-            $imgs_url = 'http://stack.publicmail.cn/'.$hash_string;
+            $imgs_url = "http".((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "s" : "")."://".$_SERVER['HTTP_HOST'].'/'.$hash_string;
         }
         $this->track_model->add($mail,$imgs_url,$remind_days,$subject,$ip);
         $data = '{"status":1,"info":"OK","data":"'.$imgs_url.'"}';
