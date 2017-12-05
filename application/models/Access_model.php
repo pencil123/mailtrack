@@ -27,13 +27,17 @@ class Access_model extends CI_Model {
         $where_array = array('imgpath'=>$img_url);
         $result = $this->db->get_where('record',$where_array);
         $record_id = $result->row()->id;
-
         $long_ip = ip2long($ip_str);
+        $result = $this->sina_ip_lib($ip_str);
+        if($result)
+            $addr = $result;
+        else
+            $addr = 'unknown';
         $data_array = array(
             'record_id'=>$record_id,
             'access_time'=>$time,
-            'ip'=>$long_ip);
-
+            'ip'=>$long_ip,
+            'addr'=>$addr);
         $this->db->insert('access',$data_array);
     }
 
@@ -48,7 +52,7 @@ class Access_model extends CI_Model {
         foreach( $query->result() as $row){
             $record_id = $row->record_id;
             $ip_str = long2ip($row->ip);
-            $single = array('ip'=>$ip_str,'time'=>$row->access_time);
+            $single = array('ip'=>$ip_str,'time'=>$row->access_time,'addr'=>$row->addr);
 
             if(array_key_exists($record_id, $access_array)){
                 array_push($access_array[$record_id], $single);
@@ -59,6 +63,15 @@ class Access_model extends CI_Model {
         return $access_array;
     }
 
+    public function update_status()
+    {
+        $where_array= array('status'=>1);
+        $update_array = array('status'=>2);
+        $this->db->where($where_array);
+        $this->db->update('access',$update_array);
+        return True;
+    }
+
     public function record_info($record_id)
     {
         $where_array = array('id'=>$record_id);
@@ -66,5 +79,18 @@ class Access_model extends CI_Model {
         $mail = $result->row()->receive_mail;
         $title = $result->row()->title;
         return array($mail,$title);
+    }
+
+    private function sina_ip_lib($ip_str)
+    {
+        $curl = curl_init();
+        curl_setopt($curl,CURLOPT_URL, "http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=".$ip_str);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $location = curl_exec($curl);
+        $location = json_decode($location,true);
+        if($location===FALSE) return FALSE;
+        if($location['ret'] == -1) return False;
+        $addr = $location['country'].$location['province'].$location['city'];
+        return $addr;
     }
 }

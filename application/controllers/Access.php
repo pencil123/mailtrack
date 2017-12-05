@@ -43,14 +43,17 @@ class Access extends CI_Controller {
             $info = $this->Access_model->record_info($key);
             $mail =$info[0];
             $title = $info[1];
-            var_dump($info);
-            var_dump($value);
+            $data['title'] = $title;
+            $data['items'] = $value;
+
             $this->email->from('public@publicmail.cn');
-            $this->email->to('public@publicmail.cn');
+            $this->email->to($mail);
             $this->email->subject('this is subject');
-            $this->email->message('this is message');
+            $message = $this->load->view('email/access_mail',$data,TRUE);
+            $this->email->message($message);
             $this->email->send();
         }
+        $this->Access_model->update_status();
     }
 
     private function read_log()
