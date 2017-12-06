@@ -31,7 +31,7 @@
     <label>&nbsp;</label>
     <input id="btn-submit" type="submit" class="btn_submit" value="注册" title="阅读并同意《使用协议》方可注册" tabindex="5">
 </div>
-<input type="hidden" name="<?=$name;?>" value="<?=$hash;?>" />
+<input type="hidden" name="<?php echo $name;?>" value="<?php echo $hash;?>" />
 </form>
 
 <p class="p4lr">已经拥有帐号？ &nbsp;<a href="/account/login">直接登录 »</a></p>
