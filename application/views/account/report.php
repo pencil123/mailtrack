@@ -26,6 +26,43 @@
                     <input class="basic-input" type="text" value="" name="q" style="width:50%;background-image:url(http://static.ifread.com/images/search.png);background-repeat:no-repeat;padding-left:18px;background-position:center left;" placeholder="搜索...">
     </form>
 </div>
+
+<form action="" id="actform" method="post">
+
+<table class="grid">
+<thead>
+    <tr>
+    <th class="check-box">
+    <input id="_checkall_" type="checkbox" onclick="checkall(this)">
+    </th>
+    <th class="subject">邮件主题</th>
+    <th class='send-date'>追踪开始日期</th>
+    <th class='read-count'>阅读次数</th>
+    <th class='action'></th>
+    </tr>
+</thead>
+<tbody>
+<?php foreach ($records as $item):?>
+    <tr class="t-r">
+    <td><input type="checkbox" name="id[]" value="<?php echo $item['id']; ?>"></td>
+    <td class="subject" onclick="trackdetail('<?php echo $item['id']; ?>')"><a href="/account/report?action=viewdetail&id=<?php echo $item['id']; ?>"><?php echo $item['title']; ?></a></td>
+    <td class='send-date' onclick="trackdetail('<?php echo $item['id']; ?>')"><?php echo $item['create_time']; ?></td>
+    <td class='read-count' onclick="trackdetail('<?php echo $item['id']; ?>')"><?php echo $item['count']; ?></td>
+    <td class='action'><a href="/account/report?action=pause&id=<?php echo $item['id']; ?>" title="暂停追踪">
+    <img src="/images/pause.png" alt="暂停追踪" border='0'></a></td>
+    </tr>
+<?php endforeach;?>
+</tbody>
+</table>
+
+<div class="grid-footer">
+<div class="grid-actionbar">
+<input type="button" id="btn_del_2" value="删除" class="action-button btn-disabled" onclick="deleterp()" disabled="true">
+</div>
+<div class="grid-pagination">共 <span class="pagination-total-row">1</span> 条记录 1/1 页 </div>
+</div>
+</form>
+
 <p style="text-align:center;">您目前没有邮件追踪记录。只有在登录状态下生成追踪图片才会在此显示您的记录。</p>
 </form>
 </div>

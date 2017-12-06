@@ -72,12 +72,12 @@
 </form>
 </div>
 
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.form.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.tooltip.pack.js"></script>
+    <script type="text/javascript" src="/static/js/dui.dialog.js"></script>
 
-<script type="text/javascript" src="http://static.ifread.com/js/jquery.min.js"></script>
-<script type="text/javascript" src="http://static.ifread.com/js/jquery.validate.min.js"></script>
-<script type="text/javascript" src="http://static.ifread.com/js/jquery.form.min.js"></script>
-<script type="text/javascript" src="http://static.ifread.com/js/jquery.tooltip.pack.js"></script>
-<script type="text/javascript" src="http://static.ifread.com/js/dui.dialog.js"></script>
 <script type="text/javascript">
 var iscleardot = false;
 
@@ -170,7 +170,7 @@ $.ajax('/track/remind', { cache: false });
 var dlg = dui.Dialog();
 dlg.set({
 title: "选择图片",
-url: 'track/selectimage',
+url: '/track/selectimage',
 width: 540,
 cache: true,
 

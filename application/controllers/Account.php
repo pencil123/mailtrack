@@ -152,12 +152,15 @@ class Account extends CI_Controller {
 
     public function report()
     {
-        if(!$this->session->mail){
+        $mail = $this->session->mail;
+
+        if(!$mail){
             redirect(base_url('/account/login'),'refresh',301);
         }
         $data['title'] = 'Alien';
+        $data['records'] = $this->account_model->record_list($mail);
         $this->load->view('templates/header',$data);
-        $this->load->view('account/report');
+        $this->load->view('account/report',$data);
         $this->load->view('templates/footer');
     }
 
