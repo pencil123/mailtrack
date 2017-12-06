@@ -119,8 +119,9 @@ class Account extends CI_Controller {
             }
         }else{
             //GET 注册
-            $csrf = array('name' => $this->security->get_csrf_token_name(),
-                'hash' => $this->security->get_csrf_hash());
+            $name => $this->security->get_csrf_token_name();
+            $hash => $this->security->get_csrf_hash();
+            $csrf = array('name'=>$name,'hash'=>$hash);
             $this->load->view('templates/header',$msg);
             $this->load->view('account/register',$csrf);
             $this->load->view('templates/footer');
