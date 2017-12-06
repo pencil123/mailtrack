@@ -8,6 +8,14 @@
 </div>
 <div>
 <form method="post" action="/account/login" id="loginForm">
+
+<?php if($loginfalse): ?>
+<div class="item">
+        <label></label>
+        <p class="error-message">帐号不存在或未激活。</p>
+</div>
+<?php endif;?>
+
 <div class="item">
         <label>帐号</label>
         <input id="account" class="basic-input" type="text" value="" tabindex="1" maxlength="60" name="account" placeholder="邮箱">

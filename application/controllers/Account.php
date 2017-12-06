@@ -54,20 +54,21 @@ class Account extends CI_Controller {
                 $this->load->view('templates/footer');
             }else{
                 //登陆失败
+                $csrf = array('name' => $this->security->get_csrf_token_name(),
+                'hash' => $this->security->get_csrf_hash(),'loginfalse'=>True);
                 $this->load->view('templates/header',$data);
-                $this->load->view('account/loginfalse');
+                $this->load->view('account/login',$csrf);
                 $this->load->view('templates/footer');
             }
         }else{
             //GET 登陆页面
             $csrf = array('name' => $this->security->get_csrf_token_name(),
-                'hash' => $this->security->get_csrf_hash());
+                'hash' => $this->security->get_csrf_hash(),'loginfalse'=>False);
             $this->load->view('templates/header',$data);
             $this->load->view('account/login',$csrf);
             $this->load->view('templates/footer');
         }
     }
-
 
     public function logout()
     {
