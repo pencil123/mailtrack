@@ -24,8 +24,9 @@ class Access_model extends CI_Model {
 
     public function sync_access($img_url,$time,$ip_str)
     {
-        $where_array = array('imgpath'=>$img_url);
+        $where_array = array('imgpath'=>$img_url,'status'=>1);
         $result = $this->db->get_where('record',$where_array);
+        if(!$result->num_rows()) return False;
         $record_id = $result->row()->id;
         $long_ip = ip2long($ip_str);
         $result = $this->sina_ip_lib($ip_str);
@@ -39,6 +40,7 @@ class Access_model extends CI_Model {
             'ip'=>$long_ip,
             'addr'=>$addr);
         $this->db->insert('access',$data_array);
+        return True;
     }
 
     public function parse_access()

@@ -48,7 +48,8 @@ class Account extends CI_Controller {
             $result = $this->account_model->login($mail,$passwd);
             if($result){
                 //登陆成功
-                $this->session->set_userdata(array('mail' => $mail,'passwd' => $passwd));
+
+                $this->session->set_userdata(array('mail' => $mail,'user_id' => $result));
 
                 $this->load->view('templates/header',$data);
                 $this->load->view('account/track');
@@ -113,8 +114,8 @@ class Account extends CI_Controller {
                 //2、更新session，直接登陆
                 $msg = array('title'=>'注册成功');
                 $passwd =  $this->input->post('password');
-                $this->account_model->register($mail,$passwd);
-                $this->session->set_userdata(array('mail' => $mail,'passwd' => $passwd));
+                $user_id = $this->account_model->register($mail,$passwd);
+                $this->session->set_userdata(array('mail' => $mail,'user_id' => $user_id));
                 $this->load->view('templates/header',$msg);
                 $this->load->view('account/track');
                 $this->load->view('templates/footer');
@@ -155,18 +156,52 @@ class Account extends CI_Controller {
 
     public function report()
     {
-        $mail = $this->session->mail;
-        if(!$mail){
+        $user_id = $this->session->user_id;
+        if(!$user_id){
             redirect(base_url('/account/login'),'refresh',301);
         }
 
-        $action = $this->input->post('action');
 
-        $data['title'] = 'Alien';
-        $data['records'] = $this->account_model->record_list($mail);
-        $this->load->view('templates/header',$data);
-        $this->load->view('account/report',$data);
-        $this->load->view('templates/footer');
+        $action = $this->input->get('action');
+        $ajax = $this->input->get('ajax');
+
+
+        if(!$action){
+            $data['title'] = 'Alien';
+            $data['records'] = $this->account_model->record_list($user_id);
+            $this->load->view('templates/header',$data);
+            $this->load->view('account/report',$data);
+            $this->load->view('templates/footer');
+            return True;
+        }
+
+        if($action == 'delete'){
+            $ids = $this->input->post('id');
+            $this->account_model->delete_records($user_id,$ids);
+            return True;
+        }
+        if($action == 'pause'){
+            $id = $this->input->get('id');
+            $this->account_model->pause_record($user_id,$id);
+            $data['title'] = 'Alien';
+            $data['records'] = $this->account_model->record_list($user_id);
+            $this->load->view('templates/header',$data);
+            $this->load->view('account/report',$data);
+            $this->load->view('templates/footer');
+            return True;
+        }
+
+        if($action == 'resume'){
+            $id = $this->input->get('id');
+            $this->account_model->resume_record($user_id,$id);
+            $data['title'] = 'Alien';
+            $data['records'] = $this->account_model->record_list($user_id);
+            $this->load->view('templates/header',$data);
+            $this->load->view('account/report',$data);
+            $this->load->view('templates/footer');
+            return True;
+        }
+
     }
 
     public function photo()

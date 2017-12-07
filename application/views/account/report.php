@@ -48,8 +48,16 @@
     <td class="subject" onclick="trackdetail('<?php echo $item['id']; ?>')"><a href="/account/report?action=viewdetail&id=<?php echo $item['id']; ?>"><?php echo $item['title']; ?></a></td>
     <td class='send-date' onclick="trackdetail('<?php echo $item['id']; ?>')"><?php echo $item['create_time']; ?></td>
     <td class='read-count' onclick="trackdetail('<?php echo $item['id']; ?>')"><?php echo $item['count']; ?></td>
+
+    <?php if($item['status'] == 1):?>
     <td class='action'><a href="/account/report?action=pause&id=<?php echo $item['id']; ?>" title="暂停追踪">
     <img src="/images/pause.png" alt="暂停追踪" border='0'></a></td>
+
+    <?php elseif($item['status'] == 2):?>
+    <td class='action'><a href="/account/report?action=resume&id=<?php echo $item['id']; ?>" title="恢复追踪">
+    <img src="http://static.ifread.com/images/resume.png" alt="恢复追踪" border='0'></a></td>
+
+    <?php endif;?>
     </tr>
 <?php endforeach;?>
 </tbody>
