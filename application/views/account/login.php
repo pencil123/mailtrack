@@ -35,7 +35,7 @@
         <input id="btn-submit" type="submit" class="btn_submit" value="登录" tabindex="4">
 </div>
 
-<input type="hidden" name="<?=$name;?>" value="<?=$hash;?>" />
+<input type="hidden" name="<?php echo $name;?>" value="<?php echo $hash;?>" />
 
 </form>
 <p class="p4lr">还没有帐号？&nbsp;<a href="/account/register">立即注册 »</a></p>

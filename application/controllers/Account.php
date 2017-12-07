@@ -49,6 +49,7 @@ class Account extends CI_Controller {
             if($result){
                 //登陆成功
                 $this->session->set_userdata(array('mail' => $mail,'passwd' => $passwd));
+
                 $this->load->view('templates/header',$data);
                 $this->load->view('account/track');
                 $this->load->view('templates/footer');
@@ -155,10 +156,12 @@ class Account extends CI_Controller {
     public function report()
     {
         $mail = $this->session->mail;
-
         if(!$mail){
             redirect(base_url('/account/login'),'refresh',301);
         }
+
+        $action = $this->input->post('action');
+
         $data['title'] = 'Alien';
         $data['records'] = $this->account_model->record_list($mail);
         $this->load->view('templates/header',$data);
