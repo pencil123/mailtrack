@@ -131,6 +131,37 @@ class Account extends CI_Controller {
         }
     }
 
+    public function editpassword()
+    //修改密码
+    {
+        $oldpassword = $this->input->post('oldpassword');
+        $msg = array('title'=>'修改密码');
+        if(!$oldpassword){
+            $name = $this->security->get_csrf_token_name();
+            $hash = $this->security->get_csrf_hash();
+            $csrf = array('name'=>$name,'hash'=>$hash,'wrongpasswd'=>False);
+            $this->load->view('templates/header',$msg);
+            $this->load->view('account/editpassword',$csrf);
+            $this->load->view('templates/footer');
+            return True;
+        }
+        $mail = $this->session->mail;
+        $login = $this->account_model->login($mail,$oldpassword);
+        if(!$login){
+            $name = $this->security->get_csrf_token_name();
+            $hash = $this->security->get_csrf_hash();
+            $csrf = array('name'=>$name,'hash'=>$hash,'wrongpasswd'=>True);
+            $this->load->view('templates/header',$msg);
+            $this->load->view('account/editpassword',$csrf);
+            $this->load->view('templates/footer');
+            return True;
+        }else{
+            $newpassword = $this->input->post('password');
+            $this->account_model->change_passwd($mail,$newpassword);
+            redirect(base_url('/account/profile?passwordchanged'),'refresh',301);
+            return True;
+        }
+    }
 
     public function track()
     {
@@ -160,7 +191,6 @@ class Account extends CI_Controller {
         if(!$user_id){
             redirect(base_url('/account/login'),'refresh',301);
         }
-
 
         $action = $this->input->get('action');
         $ajax = $this->input->get('ajax');
@@ -228,12 +258,18 @@ class Account extends CI_Controller {
 
     public function profile()
     {
-        if(!$this->session->mail){
+        $mail = $this->session->mail;
+        if(!$mail){
             redirect(base_url('/account/login'),'refresh',301);
         }
         $data['title'] = 'Alien';
+        $data['mail'] = $mail;
+        if($this->input->get('passwordchanged') === '')
+            $data['passwdchanged'] = True;
+        else
+            $data['passwdchanged'] =False;
         $this->load->view('templates/header',$data);
-        $this->load->view('account/profile');
+        $this->load->view('account/profile',$data);
         $this->load->view('templates/footer');
     }
 }

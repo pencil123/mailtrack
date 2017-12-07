@@ -426,7 +426,12 @@ table.odtt {
 
 .grid .subject {
                 text-align: left;
-                width: 65%
+                width: 35%
+}
+
+.grid .email {
+                text-align: left;
+                width: 30%
 }
 
 .grid .send-date {
@@ -447,11 +452,11 @@ table.odtt {
                 white-space: nowrap
 }
 
-.grid td.subject,
+/*.grid td.subject,
 .grid td.send-date,
 .grid td.read-count {
                 cursor: pointer
-}
+}*/
 
 .grid-footer {
                 clear: both;

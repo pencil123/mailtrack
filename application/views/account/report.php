@@ -23,7 +23,7 @@
 
 <div style="margin-top:10px;">
     <form action="/account/report" method="get">
-                    <input class="basic-input" type="text" value="" name="q" style="width:50%;background-image:url(http://static.ifread.com/images/search.png);background-repeat:no-repeat;padding-left:18px;background-position:center left;" placeholder="搜索...">
+    <input class="basic-input" type="text" value="" name="q" style="width:50%;background-image:url(http://static.ifread.com/images/search.png);background-repeat:no-repeat;padding-left:18px;background-position:center left;" placeholder="搜索...">
     </form>
 </div>
 
@@ -36,6 +36,7 @@
     <input id="_checkall_" type="checkbox" onclick="checkall(this)">
     </th>
     <th class="subject">邮件主题</th>
+    <th class="email">邮箱地址</th>
     <th class='send-date'>追踪开始日期</th>
     <th class='read-count'>阅读次数</th>
     <th class='action'></th>
@@ -45,9 +46,10 @@
 <?php foreach ($records as $item):?>
     <tr class="t-r">
     <td><input type="checkbox" name="id[]" value="<?php echo $item['id']; ?>"></td>
-    <td class="subject" onclick="trackdetail('<?php echo $item['id']; ?>')"><a href="/account/report?action=viewdetail&id=<?php echo $item['id']; ?>"><?php echo $item['title']; ?></a></td>
-    <td class='send-date' onclick="trackdetail('<?php echo $item['id']; ?>')"><?php echo $item['create_time']; ?></td>
-    <td class='read-count' onclick="trackdetail('<?php echo $item['id']; ?>')"><?php echo $item['count']; ?></td>
+    <td class="subject"><?php echo $item['title']; ?></td>
+    <td class='email'><?php echo $item['receive_mail']; ?></td>
+    <td class='send-date'><?php echo $item['create_time']; ?></td>
+    <td class='read-count'><?php echo $item['count']; ?></td>
 
     <?php if($item['status'] == 1):?>
     <td class='action'><a href="/account/report?action=pause&id=<?php echo $item['id']; ?>" title="暂停追踪">
@@ -115,9 +117,6 @@ $("#btn_del_2").attr('disabled', true).addClass('btn-disabled');
 }
 }
 
-function trackdetail(id) {
-window.location.href = '/account/report?action=viewdetail&id=' + id;
-}
 
 var dlg = dui.Dialog();
 dlg.set({

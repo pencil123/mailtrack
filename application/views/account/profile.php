@@ -8,17 +8,29 @@
 </div>
 <div id="manage-tab">
 <div class="Gq">
-<div class="d6"><span class="en"><span class="Jw e"><a href="/account/track">追踪</a></span></span><span class="en"><span class="Jw e"><a href="/account/message">消息</a></span></span><span class="en"><span class="Jw e"><a href="/account/report">报告</a></span></span><span class="en"><span class="Jw e"><a href="/account/photo">自定义图片</a></span></span><span class="en"><span class="Jw e"><a href="/account/settings">设置</a></span></span><span class="en zl"><span class="Jw e">账户</span></span>
+<div class="d6">
+<span class="en"><span class="Jw e"><a href="/account/track">追踪</a></span></span>
+<span class="en"><span class="Jw e"><a href="/account/message">消息</a></span></span>
+<span class="en"><span class="Jw e"><a href="/account/report">报告</a></span></span>
+<span class="en"><span class="Jw e"><a href="/account/photo">自定义图片</a></span></span>
+<span class="en"><span class="Jw e"><a href="/account/settings">设置</a></span></span>
+<span class="en zl"><span class="Jw e">账户</span></span>
 </div>
 </div>
 </div>
+
+<?php if($passwdchanged): ?>
+<p class="success-message-box"><span class="success-message">您的密码已更改。</span></p>
+<script type="text/javascript">setTimeout(function(){jQuery('.success-message-box').hide();},30000);</script>
+<?php endif;?>
+
 <div style="overflow-x:hidden">
 </div>
 <div>
 <table width="100%" cellPadding="8" class="odtt">
 <tr>
 <td class="label" width="30%" align="right">邮箱：</td>
-<td class="value">public@publicmail.cn</td>
+<td class="value"><?php echo $mail;?></td>
 </tr>
 <tr>
 <td class="label" align="right">密码：</td>

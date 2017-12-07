@@ -24,6 +24,14 @@ class Account_model extends CI_Model {
         }
     }
 
+    public function change_passwd($mail,$newpasswd)
+    {
+        $where_array = array('mail'=>$mail);
+        $this->db->where($where_array);
+        $this->db->update('user',array('passwd'=>$newpasswd));
+        return True;
+    }
+
     public function login($mail,$passwd)
     //验证成功返回user_id；
     //验证失败返回False
