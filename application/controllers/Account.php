@@ -165,12 +165,14 @@ class Account extends CI_Controller {
 
     public function track()
     {
-        if(!$this->session->mail){
+        $mail = $this->session->mail;
+        if(!$mail){
             redirect(base_url('/account/login'),'refresh',301);
         }
         $data['title'] = 'Alien';
+        $data['mail'] = $mail;
         $this->load->view('templates/header',$data);
-        $this->load->view('account/track');
+        $this->load->view('account/track',$data);
         $this->load->view('templates/footer');
     }
 

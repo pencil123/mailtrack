@@ -25,7 +25,7 @@
 <form id="trackForm" method="post" action="/track/send">
 <div class="item">
     <label>邮箱</label>
-    <input id="email" class="basic-input" type="text" tabindex="1" maxlength="60" name="email" autocomplete="off" placeholder="您的邮箱地址" style="width:260px;">
+    <input id="email" class="basic-input" type="text" tabindex="1" value = "<?php echo $mail;?>"maxlength="60" name="email" autocomplete="off" placeholder="您的邮箱地址" style="width:260px;">
 </div>
 
 <div class="item">
