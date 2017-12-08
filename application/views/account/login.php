@@ -58,7 +58,7 @@ messages: {
         password: "密码不能为空"
 },
 tips: {
-        account: "您注册阅否时所用的邮箱"
+        account: "您注册外星人时所用的邮箱"
 },
 onkeyup: false,
 highlight: false,

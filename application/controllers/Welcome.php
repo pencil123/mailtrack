@@ -46,7 +46,7 @@ class Welcome extends CI_Controller {
     {
         $data['title'] = 'Alien';
         $this->load->view('templates/header',$data);
-        $this->load->view('account/agreement');
+        $this->load->view('welcome/howto');
         $this->load->view('templates/footer');
     }
 
@@ -54,7 +54,7 @@ class Welcome extends CI_Controller {
     {
         $data['title'] = 'Alien';
         $this->load->view('templates/header',$data);
-        $this->load->view('account/agreement');
+        $this->load->view('welcome/faq');
         $this->load->view('templates/footer');
     }
 
@@ -62,7 +62,7 @@ class Welcome extends CI_Controller {
     {
         $data['title'] = 'Alien';
         $this->load->view('templates/header',$data);
-        $this->load->view('account/agreement');
+        $this->load->view('welcome/privacy');
         $this->load->view('templates/footer');
     }
 

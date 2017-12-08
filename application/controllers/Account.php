@@ -51,9 +51,7 @@ class Account extends CI_Controller {
 
                 $this->session->set_userdata(array('mail' => $mail,'user_id' => $result));
 
-                $this->load->view('templates/header',$data);
-                $this->load->view('account/track');
-                $this->load->view('templates/footer');
+                redirect(base_url('/account/track'),'refresh',301);
             }else{
                 //登陆失败
                 $csrf = array('name' => $this->security->get_csrf_token_name(),

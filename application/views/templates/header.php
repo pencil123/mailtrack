@@ -20,7 +20,7 @@
         <noscript>您的浏览器似乎已禁用或不支持 JavaScript；请更改您的浏览器选项以启用 JavaScript。</noscript>
 
         <div id="header">
-        <h1><a href="/"><img src="/static/img/logo.png" border="0" alt="电子邮件追踪服务" title="电子邮件追踪服务"><span class="sr-only">阅否电子邮件追踪服务</span></a></h1>
+        <h1><a href="/"><img src="/static/img/logo.png" border="0" alt="电子邮件追踪服务" title="电子邮件追踪服务"><span class="sr-only">外星人电子邮件追踪服务</span></a></h1>
         <h2 class="fleft">简单易用的电子邮件追踪服务</h2>
         <div class="fright" id="header-navigation">
         <?php $username = $this->session->mail;

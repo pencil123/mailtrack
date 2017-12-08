@@ -10,10 +10,10 @@
     <div class="Gq">
     <div class="d6">
     <span class="en zl"><span class="Jw e">追踪</span></span>
-    <span class="en"><span class="Jw e"><a href="/account/message">消息</a></span></span>
+<!--     <span class="en"><span class="Jw e"><a href="/account/message">消息</a></span></span> -->
     <span class="en"><span class="Jw e"><a href="/account/report">报告</a></span></span>
-    <span class="en"><span class="Jw e"><a href="/account/photo">自定义图片</a></span></span>
-    <span class="en"><span class="Jw e"><a href="/account/settings">设置</a></span></span>
+<!--     <span class="en"><span class="Jw e"><a href="/account/photo">自定义图片</a></span></span>
+    <span class="en"><span class="Jw e"><a href="/account/settings">设置</a></span></span> -->
     <span class="en"><span class="Jw e"><a href="/account/profile">账户</a></span></span>
     </div>
     </div>
@@ -25,7 +25,7 @@
 <form id="trackForm" method="post" action="/track/send">
 <div class="item">
     <label>邮箱</label>
-    <input id="email" class="basic-input" type="text" tabindex="1" value = "<?php echo $mail;?>"maxlength="60" name="email" autocomplete="off" placeholder="您的邮箱地址" style="width:260px;">
+    <input id="email" class="basic-input" type="text" tabindex="1" value = "<?php echo $mail;?>" maxlength="60" name="email" autocomplete="off" placeholder="您的邮箱地址" style="width:260px;">
 </div>
 
 <div class="item">
@@ -40,7 +40,7 @@
     <input type="hidden" name="image" value="" id="hidden_image">
 </div>
 
-<div class="item">
+<!-- <div class="item">
     <label>&nbsp;</label>
     <p class="reminder-container">
     <input type="checkbox" name="reminder" id="reminder" tabindex="4" checked="checked" onclick="document.getElementById('remind_days').disabled=!this.checked;">
@@ -62,7 +62,7 @@
     </select>&nbsp;
     <label for="reminder" class="reminder-label">天内没有查看邮件，通知我。</label>
     </p>
-</div>
+</div> -->
 <div class="item">
     <label>&nbsp;</label>
     <input type="hidden" name="time_zone" id="time_zone">
@@ -249,7 +249,7 @@ $.getJSON(url, function(r) {
         });
     } else {
     if (r.info == 'login_required') {
-        $('<li class="uid-l"></li>').html('<p class="mm">要使用自定义图片，您必须先登录。</p><p class="p4lr">已经拥有阅否帐号？  &nbsp;<a  href="/account/login">直接登录 »</a></p><p class="p4lr">还没有阅否帐号？&nbsp;<a  href="/account/register">立即注册 »</a></p>').appendTo(panel);
+        $('<li class="uid-l"></li>').html('<p class="mm">要使用自定义图片，您必须先登录。</p><p class="p4lr">已经拥有外星人帐号？  &nbsp;<a  href="/account/login">直接登录 »</a></p><p class="p4lr">还没有外星人帐号？&nbsp;<a  href="/account/register">立即注册 »</a></p>').appendTo(panel);
         } else if (r.info == 'no_photo') {
             $('<li class="uid-l"></li>').html('<p class="mm">您还没有上传自定义图片。</p><p class="p4lr">您最多可以上传10张自定义图片。&nbsp;<a  href="/account/photo">马上上传 »</a></p>').appendTo(panel);
         }

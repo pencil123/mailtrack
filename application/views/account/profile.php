@@ -10,10 +10,10 @@
 <div class="Gq">
 <div class="d6">
 <span class="en"><span class="Jw e"><a href="/account/track">追踪</a></span></span>
-<span class="en"><span class="Jw e"><a href="/account/message">消息</a></span></span>
+<!-- <span class="en"><span class="Jw e"><a href="/account/message">消息</a></span></span> -->
 <span class="en"><span class="Jw e"><a href="/account/report">报告</a></span></span>
-<span class="en"><span class="Jw e"><a href="/account/photo">自定义图片</a></span></span>
-<span class="en"><span class="Jw e"><a href="/account/settings">设置</a></span></span>
+<!-- <span class="en"><span class="Jw e"><a href="/account/photo">自定义图片</a></span></span>
+<span class="en"><span class="Jw e"><a href="/account/settings">设置</a></span></span> -->
 <span class="en zl"><span class="Jw e">账户</span></span>
 </div>
 </div>

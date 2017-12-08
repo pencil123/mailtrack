@@ -10,10 +10,10 @@
 <div class="Gq">
     <div class="d6">
     <span class="en"><span class="Jw e"><a href="/account/track">追踪</a></span></span>
-    <span class="en"><span class="Jw e"><a href="/account/message">消息</a></span></span>
+<!--     <span class="en"><span class="Jw e"><a href="/account/message">消息</a></span></span> -->
     <span class="en zl"><span class="Jw e">报告</span></span>
-    <span class="en"><span class="Jw e"><a href="/account/photo">自定义图片</a></span></span>
-    <span class="en"><span class="Jw e"><a href="/account/settings">设置</a></span></span>
+<!--     <span class="en"><span class="Jw e"><a href="/account/photo">自定义图片</a></span></span>
+    <span class="en"><span class="Jw e"><a href="/account/settings">设置</a></span></span> -->
     <span class="en"><span class="Jw e"><a href="/account/profile">账户</a></span></span>
     </div>
 </div>
@@ -22,11 +22,11 @@
 <div class="grid-section">
 
 <div style="margin-top:10px;">
-    <form action="/account/report" method="get">
+<!--     <form action="/account/report" method="get">
     <input class="basic-input" type="text" value="" name="q" style="width:50%;background-image:url(http://static.ifread.com/images/search.png);background-repeat:no-repeat;padding-left:18px;background-position:center left;" placeholder="搜索...">
-    </form>
+    </form> -->
 </div>
-
+<?php  if(count($records)):?>
 <form action="" id="actform" method="post">
 
 <table class="grid">
@@ -43,6 +43,7 @@
     </tr>
 </thead>
 <tbody>
+
 <?php foreach ($records as $item):?>
     <tr class="t-r">
     <td><input type="checkbox" name="id[]" value="<?php echo $item['id']; ?>"></td>
@@ -72,9 +73,9 @@
 <div class="grid-pagination">共 <span class="pagination-total-row">1</span> 条记录 1/1 页 </div>
 </div>
 </form>
-
+<?php else: ?>
 <p style="text-align:center;">您目前没有邮件追踪记录。只有在登录状态下生成追踪图片才会在此显示您的记录。</p>
-</form>
+<?php endif;?>
 </div>
 </div>
 <script type="text/javascript">
